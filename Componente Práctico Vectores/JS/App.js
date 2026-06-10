@@ -41,21 +41,21 @@ btnVaciarVector.addEventListener("click", function(){
 })
 
 // Botones nuevos
-btnValorMinimo.addEventListener("click", function(e){
+btnValorMinimo.addEventListener("click", function(){
     encontrarValorMinimo()
 })
 
-btnValorMaximo.addEventListener("click", function(e){
+btnValorMaximo.addEventListener("click", function(){
     encontrarValorMaximo()
 })
 
-btnSumaTotal.addEventListener("click", function(e){
+btnSumaTotal.addEventListener("click", function(){
     let suma = calcularSumaTotal()
     resultado.value = "Suma total: " + suma
 })
 
 
-btnProductoTotal.addEventListener("click", function(e){
+btnProductoTotal.addEventListener("click", function(){
     calcularProductoTotal()
 })
 
@@ -83,9 +83,9 @@ btnMediana.addEventListener("click", function(){
     }
 })
 
+
 btnModa.addEventListener("click", function(){
-    let moda = calcularModa()
-    resultado.value = "Moda: " + moda
+    resultado.value = calcularModa()
 
 })
 
@@ -456,5 +456,15 @@ function calcularModa(){
         return "No existe moda"
     }
 
-    return moda
+       // Guardar las posiciones donde aparece la moda
+    let posiciones = []
+
+    for(let i = 0; i < vector.length; i++){
+
+        if(vector[i] == moda){
+            posiciones.push(i)
+        }
+    }
+
+   return "Moda: " + moda + " (encontrada en posiciones: " + posiciones.join(", ") + ")"
 }
